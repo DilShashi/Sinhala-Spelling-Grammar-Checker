@@ -1,7 +1,5 @@
 # Sinhala-Spelling-Grammar-Checker
 
-New Repository
-
 Data Collection and Preparation
 
 We have made significant progress in collecting and processing data for our Sinhala spelling and grammar checker. This stage focused on gathering authentic Sinhala text to create a comprehensive dictionary and understand how Sinhala is used in different contexts.
