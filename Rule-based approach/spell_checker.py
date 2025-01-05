@@ -1,3 +1,5 @@
+# Inside spell-checker.py
+
 import re
 import pandas as pd
 from difflib import get_close_matches
@@ -79,15 +81,14 @@ def correct_sinhala_text(paragraph):
 
     return corrected_paragraph, corrections
 
+# Return corrected paragraph
+def get_corrected_paragraph(paragraph):
+    corrected_paragraph, corrections = correct_sinhala_text(paragraph)
+    return corrected_paragraph
+
 # Example usage
 if __name__ == "__main__":
     input_paragraph = "මම දෙඩම් කනවා. අමාලි පාසැලට යනව. අපි කෑම කනවා. කුරුල්ලෝ පියාඹනවා."
-    corrected_paragraph, corrections = correct_sinhala_text(input_paragraph)
+    corrected_paragraph = get_corrected_paragraph(input_paragraph)
 
     print("Corrected Paragraph:", corrected_paragraph)
-    print("Corrections:")
-    for original, corrected in corrections:
-        if isinstance(corrected, list):
-            print(f"Original: {original}, Suggestions: {corrected}")
-        else:
-            print(f"Original: {original}, Corrected: {corrected}")
