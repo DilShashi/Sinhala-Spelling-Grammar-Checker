@@ -9,20 +9,12 @@
 
 ### 2. **Grammar Correction**
 - Identifies grammatical inconsistencies in sentences by focusing on the relationship between the subject and verb.
-- Corrects verbs to match the subject in both present and past tenses.
+- Corrects verbs to match the subject in present tense.
 - Converts informal or incorrect verb forms to their formal equivalents.
 
-### 3. **Support for Multiple Tenses**
-- Present Tense: Converts verbs in the **Normal Verb - Present Tense** form to **Written Verb - Present Tense**.
-- Past Tense: Converts verbs in the **Normal Verb - Past Tense** form to **Written Verb - Past Tense**.
-
-### 4. **Sentence-Level Analysis**
+### 3. **Sentence-Level Analysis**
 - Splits input paragraphs into sentences for individual processing.
 - Identifies the first word (subject) and the last word (verb) in each sentence for grammar correction.
-
-### 5. **Integration with Machine Learning (Optional)**
-- Uses NLP techniques like word embeddings and n-grams for advanced text analysis.
-- Optionally employs machine learning models to predict correct spellings and grammatical structures based on context.
 
 ## Workflow
 
@@ -81,7 +73,7 @@ The tool uses a CSV dataset (`verbs.csv`) for grammar correction and a data file
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/sinhala-spell-grammar-checker.git
+   git clone https://github.com/Sesadi13/Sinhala-Spelling-Grammar-Checker.git
    ```
 2. Install dependencies:
    ```bash
@@ -89,14 +81,12 @@ The tool uses a CSV dataset (`verbs.csv`) for grammar correction and a data file
    ```
 3. Place the required files in the project directory:
    - `verbs.csv`: Dataset for grammar correction.
-   - `sinhala_words.txt`: Dictionary for spelling correction.
+   - `data-spell-checker.xlsx`: Dataset for spelling correction.
 4. Run the program:
    ```bash
-   python sinhala_spell_grammar_checker.py
+   python Sinhala-Spelling-Grammar-Checker.py
    ```
 5. Input your Sinhala paragraph when prompted, and view the corrected output.
-
----
 
 ## Future Enhancements
 
@@ -117,4 +107,3 @@ The tool uses a CSV dataset (`verbs.csv`) for grammar correction and a data file
 Feel free to contribute to this project by:
 - Expanding the dataset for better accuracy.
 - Improving algorithms for faster and more reliable processing.
-- Adding features like a GUI for user-friendly interaction.
