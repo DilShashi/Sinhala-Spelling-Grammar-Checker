@@ -14,15 +14,32 @@ def process_paragraph():
         return
 
     # First, get the corrected paragraph from spell checker
-    spell_corrected_paragraph = get_corrected_paragraph(input_paragraph)
+    spell_corrected_paragraph, words_to_underline = get_corrected_paragraph(input_paragraph)
     
     # Then, apply grammar correction
     corrected_paragraph = grammar_check(spell_corrected_paragraph)
-    
+
+    # Remove any existing tags
+    output_text.tag_remove("blue", "1.0", tk.END)
+
     # Display the corrected paragraph in the GUI
     output_text.delete(1.0, tk.END)
     output_text.insert(tk.END, corrected_paragraph)
-    
+
+    # Highlight words to be displayed in blue without underlining
+    for word in words_to_underline:
+        start_index = "1.0"
+        while True:
+            start_index = output_text.search(word, start_index, stopindex=tk.END)
+            if not start_index:
+                break
+            end_index = f"{start_index}+{len(word)}c"
+            output_text.tag_add("blue", start_index, end_index)
+            start_index = end_index
+
+    # Configure the blue color tag
+    output_text.tag_configure("blue", foreground="blue")
+
     # Make the true paragraph input box and evaluation button visible
     true_paragraph_label.pack(pady=10)
     true_paragraph_input.pack(pady=5)
@@ -38,8 +55,6 @@ def evaluate_paragraph():
         return
 
     # Calculate evaluation metric (e.g., accuracy)
-    # Here we compare the true paragraph and corrected one
-    # In a real scenario, you would use more sophisticated evaluation, like BLEU, ROUGE, etc.
     true_words = true_paragraph.split()
     corrected_words = corrected_paragraph.split()
     

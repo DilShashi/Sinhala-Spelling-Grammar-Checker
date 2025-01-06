@@ -1,5 +1,3 @@
-# Inside spell_checker.py
-
 import re
 import pandas as pd
 from difflib import get_close_matches
@@ -49,6 +47,7 @@ def correct_sinhala_text(paragraph):
     corrected_paragraph = paragraph
     corrections = []
     corrected_words = {}  # Track already corrected words
+    words_to_underline = []  # Track words to underline in blue
 
     for sentence in sentences:
         tokens = tokenize_sinhala_text(sentence)
@@ -73,15 +72,16 @@ def correct_sinhala_text(paragraph):
                             corrected_paragraph = corrected_paragraph.replace(word, suggestion)
                             corrections.append((word, suggestion))
                             corrected_words[word] = suggestion  # Mark this word as corrected
+                            words_to_underline.append(suggestion)  # Add the suggestion to the list
                             break
                     else:
                         # No suggestion satisfies the vowel modifier rule
                         corrections.append((word, suggestions))
                         corrected_words[word] = None  # Track as not replaceable
 
-    return corrected_paragraph, corrections
+    return corrected_paragraph, words_to_underline
 
 # Return corrected paragraph
 def get_corrected_paragraph(input_paragraph):
-    spell_corrected_paragraph, corrections = correct_sinhala_text(input_paragraph)
-    return spell_corrected_paragraph
+    spell_corrected_paragraph, words_to_underline = correct_sinhala_text(input_paragraph)
+    return spell_corrected_paragraph, words_to_underline
