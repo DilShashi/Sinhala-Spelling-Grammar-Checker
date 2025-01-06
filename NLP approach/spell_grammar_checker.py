@@ -50,11 +50,15 @@ def evaluate_paragraph():
         messagebox.showwarning("Input Error", "Please enter the true paragraph.")
         return
 
-    # Calculate evaluation metric (e.g., accuracy)
+    # Split the paragraphs into words
     true_words = true_paragraph.split()
     corrected_words = corrected_paragraph.split()
 
-    accuracy = accuracy_score(true_words, corrected_words)
+    # Calculate the intersection of words in both lists
+    correct_word_count = sum(1 for word in corrected_words if word in true_words)
+
+    # Calculate accuracy as the ratio of correct words to total words in corrected paragraph
+    accuracy = correct_word_count / len(corrected_words) if corrected_words else 0
 
     # Display evaluation results in the GUI
     evaluation_result.delete(1.0, tk.END)
