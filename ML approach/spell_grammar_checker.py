@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from grammar_checker import grammar_check
 from spell_checker import get_corrected_paragraph
-from sklearn.metrics import accuracy_score  # Example evaluation metric
+from sklearn.metrics import accuracy_score  # Optional if we decide to use accuracy_score later
 
 # Global variable to store the selected tense
 tense_type = None
@@ -50,15 +50,17 @@ def evaluate_paragraph():
         messagebox.showwarning("Input Error", "Please enter the true paragraph.")
         return
 
-    # Calculate evaluation metric (e.g., accuracy)
+    # Tokenize the paragraphs into words
     true_words = true_paragraph.split()
     corrected_words = corrected_paragraph.split()
 
-    accuracy = accuracy_score(true_words, corrected_words)
+    # Calculate word overlap (common words)
+    common_words = set(true_words) & set(corrected_words)
+    overlap_percentage = len(common_words) / len(true_words) * 100 if true_words else 0
 
     # Display evaluation results in the GUI
     evaluation_result.delete(1.0, tk.END)
-    evaluation_result.insert(tk.END, f"Evaluation Accuracy: {accuracy:.2f}")
+    evaluation_result.insert(tk.END, f"Word Overlap Percentage: {overlap_percentage:.2f}%")
 
     # Make the evaluation results section visible after clicking the evaluate button
     evaluation_label.pack(pady=10)
