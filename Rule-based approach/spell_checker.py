@@ -1,4 +1,4 @@
-# Inside spell-checker.py
+# Inside spell_checker.py
 
 import re
 import pandas as pd
@@ -82,13 +82,6 @@ def correct_sinhala_text(paragraph):
     return corrected_paragraph, corrections
 
 # Return corrected paragraph
-def get_corrected_paragraph(paragraph):
-    corrected_paragraph, corrections = correct_sinhala_text(paragraph)
-    return corrected_paragraph
-
-# Example usage
-if __name__ == "__main__":
-    input_paragraph = "මම දෙඩම් කනවා. අමාලි පාසැලට යනව. අපි කෑම කනවා. කුරුල්ලෝ පියාඹනවා."
-    corrected_paragraph = get_corrected_paragraph(input_paragraph)
-
-    print("Corrected Paragraph:", corrected_paragraph)
+def get_corrected_paragraph(input_paragraph):
+    spell_corrected_paragraph, corrections = correct_sinhala_text(input_paragraph)
+    return spell_corrected_paragraph

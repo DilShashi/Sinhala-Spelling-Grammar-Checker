@@ -1,15 +1,9 @@
 # Inside grammar-checker.py
 
 import re
-import sys
-sys.path.append(r'c:\Users\dilan\Desktop\Sinhala-Spelling-Grammar-Checker\Rule-based approach')
-sys.path.append(r'c:\Users\dilan\Desktop\Sinhala-Spelling-Grammar-Checker')
-
-from spell_checker import get_corrected_paragraph
-from paragraphs import get_paragraphs  # Importing the function from paragraphs.py
 
 # Function to apply grammar correction rules
-def grammar_check(paragraph):
+def grammar_check(input_paragraph):
     # Define the rules for verb modification based on subject
     def apply_rules(sentence):
         # Remove extra spaces before processing
@@ -50,29 +44,13 @@ def grammar_check(paragraph):
         return " ".join(words)
 
     # Split paragraph into sentences using punctuation marks
-    sentences = re.split(r'[.!?]\s*', paragraph.strip())  # Split by punctuation marks: period, exclamation mark, or question mark
+    sentences = re.split(r'[.!?]\s*', input_paragraph.strip())  # Split by punctuation marks: period, exclamation mark, or question mark
     corrected_sentences = [apply_rules(sentence) for sentence in sentences if sentence]
 
     # Reassemble the paragraph
     corrected_paragraph = ". ".join(corrected_sentences) + "."
     return corrected_paragraph
 
-# Sample Input Paragraph
-from spell_checker import get_corrected_paragraph
 
-if __name__ == "__main__":
-    # Get paragraphs from paragraphs.py
-    paragraphs = get_paragraphs()
 
-    input_paragraph = paragraphs[0]["input_paragraph"]
 
-input_paragraph = get_corrected_paragraph(input_paragraph)
-print("Input Paragraph:")
-print(input_paragraph)
-
-# Apply the grammar check function
-corrected_paragraph = grammar_check(input_paragraph)
-
-# Display the modified paragraph
-print("\nModified Paragraph:")
-print(corrected_paragraph)
