@@ -3,10 +3,10 @@
 import re
 import sys
 sys.path.append(r'c:\Users\dilan\Desktop\Sinhala-Spelling-Grammar-Checker\Rule-based approach')
-sys.path.append(r'c:\Users\dilan\Desktop\Sinhala-Spelling-Grammar-Checker')
 
 from spell_checker import get_corrected_paragraph
-from paragraphs import get_paragraphs  # Importing the function from paragraphs.py
+
+
 
 # Function to apply grammar correction rules
 def grammar_check(paragraph):
@@ -60,13 +60,7 @@ def grammar_check(paragraph):
 # Sample Input Paragraph
 from spell_checker import get_corrected_paragraph
 
-if __name__ == "__main__":
-    # Get paragraphs from paragraphs.py
-    paragraphs = get_paragraphs()
-
-    input_paragraph = paragraphs[0]["input_paragraph"]
-
-input_paragraph = get_corrected_paragraph(input_paragraph)
+input_paragraph = get_corrected_paragraph("මම දෙඩම් කනවා. අමාලි පාසැලට යනව. අපි කෑම කනවා. කුරුල්ලෝ පියාඹනවා.")
 print("Input Paragraph:")
 print(input_paragraph)
 
