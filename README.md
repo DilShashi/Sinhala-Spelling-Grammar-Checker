@@ -64,7 +64,7 @@
 
 ## Dataset Structure
 
-The tool uses a CSV dataset (`verbs.csv`) for grammar correction and a data file (`data-spell-checker.csv`) for spelling correction.
+The tool uses a CSV dataset (`verbs.csv`) for grammar correction and a data file (`data-spell-checker.xlsx`) for spelling correction.
 
 ### CSV Dataset for Grammar Correction
 - **Columns**:
